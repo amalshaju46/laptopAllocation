@@ -236,13 +236,18 @@
           </ul>
         </div>
     </nav>
-	{% if allocation != None %}
+	{% if allocation == False %}
+	<div class="alert alert-danger alert-dismissible">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<strong>No Available Laptops!</strong> 
+	</div>
+	{% elif allocation != None %}
 	<div class="alert alert-success alert-dismissible">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 		<strong>Success!</strong> 
 		Laptop {{allocation.laptop.serial_number}} {{allocation.laptop.model_name}} has been allocated to
 		Student {{allocation.student.full_name}}
-	  </div>
+	</div>
 	{% endif %}
 	<div class="container">
 		<div class="table-wrapper">

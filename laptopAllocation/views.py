@@ -158,7 +158,7 @@ def allocateLaptop(student):
             break
     
     if laptop == None:
-        return None
+        return False
 
     allocation = Allocation(
         student = student,

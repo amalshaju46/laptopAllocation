@@ -76,11 +76,17 @@ def BATCH_DELETE(request,id):
 def STUDENT(request):
     global allocation_notification
     students = Student.objects.all()
+
+    # For creating options in the dropdown menu of add and edit modal
     batches = Batch.objects.all()
+
+    # For datepicker to understand the date correctly in edit modal
     def dateMapFunction(s):
         s.date_of_joining = s.date_of_joining.strftime('%Y-%m-%d')
         return s
     students = tuple(map(dateMapFunction,students))
+    # =============================================================
+
     context = {
         'batches':batches,
         'students':students,
@@ -139,6 +145,9 @@ def ALLOCATION(request):
     }
     return render(request,"allocation.html",context)
 
+
+# ===========================================
+# Laptop allocation logic
 def allocateLaptop(student):
     batch = student.batch
     laptops = Laptop.objects.all()

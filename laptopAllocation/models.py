@@ -29,7 +29,7 @@ class Student(models.Model):
         return self.full_name
     
 class Laptop(models.Model):
-    serial_number = models.IntegerField(unique=True,editable=False)
+    serial_number = models.CharField(unique=True,editable=False,max_length=10)
     model_name = models.CharField(max_length=10)
 
     def __str__(self):
